@@ -1,0 +1,33 @@
+﻿<Page x:Class="Nyam_Nyam.Pages.PRecipes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Nyam_Nyam.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PRecipes">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Text="{Binding Dish.Name, StringFormat='Recipe for «{0}»'}"
+                   FontSize="28"
+                   Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <TextBlock Text="{Binding Dish.Category.Name, StringFormat='Category: {0}'}"
+                               Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding Time, StringFormat='Cooking time: {0}'}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="{Binding Dish.BaseServings, StringFormat='Servings: {0}'}"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</Page>

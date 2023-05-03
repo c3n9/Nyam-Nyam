@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PRecipes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Category.cs">
@@ -124,6 +128,9 @@
     </Compile>
     <Compile Include="Pages\PDishes.xaml.cs">
       <DependentUpon>PDishes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PRecipes.xaml.cs">
+      <DependentUpon>PRecipes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

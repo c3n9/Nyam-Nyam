@@ -29,6 +29,7 @@ namespace Nyam_Nyam.Pages
             category.Insert(0, new Category() { Name = "View all" });
             CBCategory.ItemsSource = category;
             CBCategory.SelectedIndex = 0;
+            
         }
 
         private void AddNewdish_Click(object sender, RoutedEventArgs e)
@@ -41,6 +42,7 @@ namespace Nyam_Nyam.Pages
         }
         private void Refresh()
         {
+            //App.MainWindowInstance.HLDishes.IsEnabled = false;
             var filtred = App.DB.Dish.ToList();
             var selectedCategory = CBCategory.SelectedItem as Category;
             var searchText = TBSurch.Text.ToLower();
@@ -64,6 +66,20 @@ namespace Nyam_Nyam.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Refresh();
+        }
+
+        private void LVDishes_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var selectedDish = LVDishes.SelectedItem as Dish;
+            if (selectedDish != null)
+            {
+                NavigationService.Navigate(new PRecipes(selectedDish));
+            }
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            App.MainWindowInstance.HLDishes.IsEnabled = true;
         }
     }
 }

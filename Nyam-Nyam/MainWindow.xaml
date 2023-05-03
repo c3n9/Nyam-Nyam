@@ -24,7 +24,7 @@
                     Back
                 </Hyperlink>
         </TextBlock>
-        <StackPanel Grid.RowSpan="2">
+        <StackPanel Grid.Row="1">
             <TextBlock FontSize="16"
                    Margin="10,5,10,0">
                 <Hyperlink x:Name="HLDishes"

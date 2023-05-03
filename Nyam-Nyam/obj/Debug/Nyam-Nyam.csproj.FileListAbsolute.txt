@@ -25,3 +25,5 @@ D:\c#projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\Pages\PDishes.baml
 D:\c#projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\Nyam-Nyam.csproj.CopyComplete
 D:\c#projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\Pages\PAddNewDish.g.cs
 D:\c#projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\Pages\PAddNewDish.baml
+D:\c#projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\Pages\PRecipes.g.cs
+D:\c#projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\Pages\PRecipes.baml
