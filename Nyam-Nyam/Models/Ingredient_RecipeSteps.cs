@@ -12,12 +12,12 @@ namespace Nyam_Nyam.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ingredient_Recipes
+    public partial class Ingredient_RecipeSteps
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ingredient_Recipes()
+        public Ingredient_RecipeSteps()
         {
-            this.Recipes = new HashSet<Recipes>();
+            this.RecipeSteps = new HashSet<RecipeSteps>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace Nyam_Nyam.Models
     
         public virtual Ingredient Ingredient { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recipes> Recipes { get; set; }
+        public virtual ICollection<RecipeSteps> RecipeSteps { get; set; }
     }
 }

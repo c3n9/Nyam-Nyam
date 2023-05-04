@@ -17,15 +17,27 @@ using System.Windows.Shapes;
 namespace Nyam_Nyam.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PRecipes.xaml
+    /// Логика взаимодействия для POrders.xaml
     /// </summary>
-    public partial class PRecipes : Page
+    public partial class POrders : Page
     {
-        public PRecipes(Dish dish)
+        public POrders()
         {
             InitializeComponent();
-            var recipes = App.DB.RecipeSteps.Where(r => r.DishId == dish.Id).ToList();
-            DataContext = recipes;
+            Refresh();
+        }
+        private void Refresh()
+        {
+            App.MainWindowInstance.HLOrders.IsEnabled = false;
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            App.MainWindowInstance.HLOrders.IsEnabled = true;
         }
     }
 }

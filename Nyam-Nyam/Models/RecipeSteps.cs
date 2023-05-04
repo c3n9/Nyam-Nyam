@@ -12,7 +12,7 @@ namespace Nyam_Nyam.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Recipes
+    public partial class RecipeSteps
     {
         public int Id { get; set; }
         public string ProcessDescription { get; set; }
@@ -21,6 +21,6 @@ namespace Nyam_Nyam.Models
         public Nullable<int> IngredientI_RecipesId { get; set; }
     
         public virtual Dish Dish { get; set; }
-        public virtual Ingredient_Recipes Ingredient_Recipes { get; set; }
+        public virtual Ingredient_RecipeSteps Ingredient_RecipeSteps { get; set; }
     }
 }

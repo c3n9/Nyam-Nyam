@@ -84,6 +84,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PListOfIngredients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\POrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PRecipes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,7 +107,7 @@
     <Compile Include="Models\Ingredient.cs">
       <DependentUpon>ModelNyamNyam.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ingredient_Recipes.cs">
+    <Compile Include="Models\Ingredient_RecipeSteps.cs">
       <DependentUpon>ModelNyamNyam.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelNyamNyam.Context.cs">
@@ -117,7 +125,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelNyamNyam.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Recipes.cs">
+    <Compile Include="Models\Partials\Ingredient.cs" />
+    <Compile Include="Models\RecipeSteps.cs">
       <DependentUpon>ModelNyamNyam.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
@@ -128,6 +137,12 @@
     </Compile>
     <Compile Include="Pages\PDishes.xaml.cs">
       <DependentUpon>PDishes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PListOfIngredients.xaml.cs">
+      <DependentUpon>PListOfIngredients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\POrders.xaml.cs">
+      <DependentUpon>POrders.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PRecipes.xaml.cs">
       <DependentUpon>PRecipes.xaml</DependentUpon>
@@ -176,6 +191,7 @@
       <DependentUpon>ModelNyamNyam.edmx</DependentUpon>
       <LastGenOutput>ModelNyamNyam.cs</LastGenOutput>
     </Content>
+    <Resource Include="Recourses\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -17,7 +17,7 @@ namespace Nyam_Nyam.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ingredient()
         {
-            this.Ingredient_Recipes = new HashSet<Ingredient_Recipes>();
+            this.Ingredient_RecipeSteps = new HashSet<Ingredient_RecipeSteps>();
         }
     
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace Nyam_Nyam.Models
         public int AvailableCountInStock { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ingredient_Recipes> Ingredient_Recipes { get; set; }
+        public virtual ICollection<Ingredient_RecipeSteps> Ingredient_RecipeSteps { get; set; }
     }
 }

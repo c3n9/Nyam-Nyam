@@ -9,6 +9,10 @@
       Title="PAddNewDish">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
         <StackPanel>
             <TextBlock Text="Name"
                        FontSize="16"/>
@@ -27,27 +31,28 @@
                        FontSize="16"/>
             <TextBox Text="{Binding FinalPrice}"
                      FontSize="16"/>
-            <TextBlock Text="Base Servings"
-                       FontSize="16"/>
-            <TextBox Text="{Binding BaseServings}"
-                     FontSize="16"/>
-            <TextBlock Text="Category"
-                       FontSize="16"/>
-            <ComboBox x:Name="CBCategory"
-                      DisplayMemberPath="Name"
-                      SelectedItem="{Binding Category}"/>
-            <Image Source="{Binding Photo}"
-                   Height="100"
-                   Width="90"/>
-            <Button x:Name="BPhoto"
-                    Click="BPhoto_Click"
-                    Content="Add photo"/>
+            
+            
             <Button x:Name="BSave"
                     Click="BSave_Click"
                     Content="Save"/>
             <Button x:Name="BDelete"
                     Click="BDelete_Click"
                     Content="Delete"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Category"
+                       FontSize="16" />
+            <ComboBox x:Name="CBCategory"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding Category}" />
+            <Image Source="{Binding Photo}"
+                   Height="150"
+                   Width="400"
+                   RenderOptions.BitmapScalingMode="Fant"/>
+            <Button x:Name="BPhoto"
+                    Click="BPhoto_Click"
+                    Content="Add photo" />
         </StackPanel>
     </Grid>
 </Page>

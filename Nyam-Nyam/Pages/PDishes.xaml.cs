@@ -29,20 +29,16 @@ namespace Nyam_Nyam.Pages
             category.Insert(0, new Category() { Name = "View all" });
             CBCategory.ItemsSource = category;
             CBCategory.SelectedIndex = 0;
-            
+
         }
 
         private void AddNewdish_Click(object sender, RoutedEventArgs e)
         {
-            var dish = LVDishes.SelectedItem as Dish;
-            if(dish == null)
-                NavigationService.Navigate(new PAddNewDish(new Dish()));
-            else if(dish != null)
-                NavigationService.Navigate(new PAddNewDish(dish));
+            NavigationService.Navigate(new PAddNewDish(new Dish()));
         }
         private void Refresh()
         {
-            //App.MainWindowInstance.HLDishes.IsEnabled = false;
+            App.MainWindowInstance.HLDishes.IsEnabled = false;
             var filtred = App.DB.Dish.ToList();
             var selectedCategory = CBCategory.SelectedItem as Category;
             var searchText = TBSurch.Text.ToLower();
@@ -80,6 +76,14 @@ namespace Nyam_Nyam.Pages
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             App.MainWindowInstance.HLDishes.IsEnabled = true;
+        }
+
+
+        private void LVDishes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedDish = LVDishes.SelectedItem as Dish;
+            NavigationService.Navigate(new PAddNewDish(selectedDish));
+
         }
     }
 }

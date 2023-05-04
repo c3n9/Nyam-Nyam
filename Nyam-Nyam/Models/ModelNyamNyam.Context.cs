@@ -28,8 +28,8 @@ namespace Nyam_Nyam.Models
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Dish> Dish { get; set; }
         public virtual DbSet<Ingredient> Ingredient { get; set; }
-        public virtual DbSet<Ingredient_Recipes> Ingredient_Recipes { get; set; }
-        public virtual DbSet<Recipes> Recipes { get; set; }
+        public virtual DbSet<Ingredient_RecipeSteps> Ingredient_RecipeSteps { get; set; }
+        public virtual DbSet<RecipeSteps> RecipeSteps { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

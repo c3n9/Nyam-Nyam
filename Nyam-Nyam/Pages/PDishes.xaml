@@ -61,32 +61,40 @@
                   Width="auto"
                   d:ItemsSource="{d:SampleData ItemCount=15}"
                   Grid.Row="1"
-                  BorderThickness="0"
-                  MouseRightButtonUp="LVDishes_MouseRightButtonDown">
+                  BorderThickness="1"
+                  Margin="10"
+                  MouseRightButtonUp="LVDishes_MouseRightButtonDown"
+                  MouseDoubleClick="LVDishes_MouseDoubleClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Image Source="{Binding Photo}"
-                               Height="150"
+                               Height="250"
                                Width="400"
                                RenderOptions.BitmapScalingMode="Fant"
                                OpacityMask="Black"
                                Stretch="Fill" />
                         <Border Background="Gray"
                                 Opacity="0.5"
-                                Height="75"
+                                Height="125"
                                 Width="400"
                                 VerticalAlignment="Bottom">
                         </Border>
-                        <StackPanel  Height="75"
+                        <StackPanel  Height="125"
                                      Width="400"
                                      VerticalAlignment="Bottom"
                                      HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Name}"
-                                       HorizontalAlignment="Center" />
-                            <TextBlock Text="{Binding FinalPrice}"
                                        HorizontalAlignment="Center"
-                                       TextWrapping="Wrap" />
+                                       FontSize="28"
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Center"/>
+                            <TextBlock Text="{Binding FinalPrice, StringFormat='${0}'}"
+                                       HorizontalAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       FontSize="28"
+                                       Foreground="White"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

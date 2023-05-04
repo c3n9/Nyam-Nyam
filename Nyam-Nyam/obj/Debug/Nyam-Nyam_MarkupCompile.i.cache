@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\c#projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\
+C:\Users\C3n9\Desktop\Nyam-Nyam\Nyam-Nyam\obj\Debug\
 Nyam_Nyam
 none
 false
 DEBUG;TRACE
-D:\c#projects\Nyam-Nyam\Nyam-Nyam\App.xaml
-4-1205270495
+C:\Users\C3n9\Desktop\Nyam-Nyam\Nyam-Nyam\App.xaml
+6-1005631929
 21574193859
-18-607935000
-18-833173225
-MainWindow.xaml;Pages\PAddNewDish.xaml;Pages\PDishes.xaml;Pages\PRecipes.xaml;
+21-856873291
+18900419863
+MainWindow.xaml;Pages\PAddNewDish.xaml;Pages\PDishes.xaml;Pages\PListOfIngredients.xaml;Pages\POrders.xaml;Pages\PRecipes.xaml;
 
-True
+False
 

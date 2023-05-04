@@ -17,7 +17,7 @@ namespace Nyam_Nyam.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Dish()
         {
-            this.Recipes = new HashSet<Recipes>();
+            this.RecipeSteps = new HashSet<RecipeSteps>();
         }
     
         public int Id { get; set; }
@@ -31,6 +31,6 @@ namespace Nyam_Nyam.Models
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Recipes> Recipes { get; set; }
+        public virtual ICollection<RecipeSteps> RecipeSteps { get; set; }
     }
 }

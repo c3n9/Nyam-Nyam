@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nyam_Nyam"
         mc:Ignorable="d"
-        Title="Recipes" Height="550" Width="1100">
+        Icon="/Recourses/icon.ico"
+        Title="Recipes" MinHeight="550" MinWidth="1100">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

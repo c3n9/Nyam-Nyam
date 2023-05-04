@@ -30,17 +30,17 @@ namespace Nyam_Nyam
 
         private void HLDishes_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate(new PDishes());
         }
 
         private void HLIngredients_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate(new PListOfIngredients());
         }
 
         private void HLOrders_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate(new POrders());
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
