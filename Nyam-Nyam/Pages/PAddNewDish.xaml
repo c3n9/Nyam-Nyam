@@ -9,51 +9,53 @@
       Title="PAddNewDish">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
         <StackPanel>
             <TextBlock Text="Name"
-                       FontSize="16"/>
+                       FontSize="16" />
             <TextBox Text="{Binding Name}"
                      FontSize="16"
-                     MaxLength="50"/>
+                     MaxLength="50" />
             <TextBlock Text="Description"
-                       FontSize="16"/>
+                       FontSize="16" />
             <TextBox Text="{Binding Description}"
-                     FontSize="16"/>
+                     FontSize="16" />
             <TextBlock Text="Source recipe link"
-                       FontSize="16"/>
+                       FontSize="16" />
             <TextBox Text="{Binding SourceRecipeLink}"
-                     FontSize="16"/>
+                     FontSize="16" />
+            <TextBlock Text="Base servings"
+                       FontSize="16" />
+            <TextBox Text="{Binding BaseServings}"
+                     FontSize="16"
+                     MaxLength="2"
+                     PreviewTextInput="TextBox_PreviewTextInput_1"/>
             <TextBlock Text="Final price"
-                       FontSize="16"/>
+                       FontSize="16" />
             <TextBox Text="{Binding FinalPrice}"
                      FontSize="16"
-                     PreviewTextInput="TextBox_PreviewTextInput"/>
-            
-            
-            <Button x:Name="BSave"
-                    Click="BSave_Click"
-                    Content="Save"/>
-            <Button x:Name="BDelete"
-                    Click="BDelete_Click"
-                    Content="Delete"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1">
+                     PreviewTextInput="TextBox_PreviewTextInput" />
             <TextBlock Text="Category"
                        FontSize="16" />
             <ComboBox x:Name="CBCategory"
                       DisplayMemberPath="Name"
                       SelectedItem="{Binding Category}" />
             <Image Source="{Binding Photo}"
-                   Height="150"
+                   Height="250"
                    Width="400"
-                   RenderOptions.BitmapScalingMode="Fant"/>
+                   RenderOptions.BitmapScalingMode="Fant"
+                   Stretch="Fill"/>
             <Button x:Name="BPhoto"
                     Click="BPhoto_Click"
                     Content="Add photo" />
+            <Button x:Name="BSave"
+                    Click="BSave_Click"
+                    Content="Save" />
+            <Button x:Name="BDelete"
+                    Click="BDelete_Click"
+                    Content="Delete" />
+            <Button x:Name="BCancel"
+                    Click="BCancel_Click"
+                    Content="Cancel" />
         </StackPanel>
     </Grid>
 </Page>
