@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Nyam_Nyam.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PRecipes">
+      Title="PRecipes"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,9 +33,32 @@
                                FontSize="16"/>
                 </StackPanel>
                 <StackPanel>
-                    <TextBlock Text="{Binding BaseServings, StringFormat='Servings: {0}'}"
-                               Margin="0,0,0,5"
-                               FontSize="16"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Servings:"
+                                   FontSize="16" />
+                        <Button x:Name="BMinus"
+                                Content="-"
+                                FontSize="16"
+                                Click="BMinus_Click"
+                                Width="25"
+                                Height="25"/>
+                        <TextBox x:Name="TBCount"
+                                 MaxLength="2"
+                                 Width="45"
+                                 Height="30"
+                                 Text="{Binding BaseServings, UpdateSourceTrigger=PropertyChanged}"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 Margin="5,0,5,0"
+                                 PreviewTextInput="TBCount_PreviewTextInput"
+                                 TextChanged="TBCount_TextChanged"/>
+                        <Button x:Name="BPlus"
+                                Content="+"
+                                FontSize="16"
+                                Click="BPlus_Click"
+                                Width="25"
+                                Height="25"/>
+                    </StackPanel>
                     <TextBlock Text="Total cost: 0$"
                                Margin="0,0,0,5"
                                FontSize="16"/>
