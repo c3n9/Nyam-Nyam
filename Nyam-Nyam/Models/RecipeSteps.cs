@@ -22,7 +22,7 @@ namespace Nyam_Nyam.Models
     
         public int Id { get; set; }
         public string ProcessDescription { get; set; }
-        public string Time { get; set; }
+        public int Time { get; set; }
         public Nullable<int> DishId { get; set; }
     
         public virtual Dish Dish { get; set; }

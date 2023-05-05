@@ -125,6 +125,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelNyamNyam.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partials\Dish.cs" />
     <Compile Include="Models\Partials\Ingredient.cs" />
     <Compile Include="Models\Partials\RecipeSteps.cs" />
     <Compile Include="Models\RecipeSteps.cs">

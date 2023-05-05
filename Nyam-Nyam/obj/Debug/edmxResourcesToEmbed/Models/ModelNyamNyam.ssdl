@@ -44,7 +44,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProcessDescription" Type="nvarchar" MaxLength="300" />
-    <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Time" Type="int" Nullable="false" />
     <Property Name="DishId" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">

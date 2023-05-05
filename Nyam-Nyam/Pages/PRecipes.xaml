@@ -28,7 +28,7 @@
                     <TextBlock Text="{Binding Category.Name, StringFormat='Category: {0}'}"
                                Margin="0,0,5,5"
                                FontSize="16"/>
-                    <TextBlock Text="{Binding Time, StringFormat='Cooking time: {0}'}"
+                    <TextBlock Text="{Binding AllTime, StringFormat='Cooking time: {0} minutes'}"
                                Margin="0,0,0,5"
                                FontSize="16"/>
                 </StackPanel>

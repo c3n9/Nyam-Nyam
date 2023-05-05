@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Nyam_Nyam.Models
 {
-    public partial class RecipeSteps
+    public partial class Dish
     {
-        public string Steps
+        public int AllTime
         {
             get
             {
-                return $" - {ProcessDescription}";
+                return this.RecipeSteps.Sum(s => s.Time);
             }
         }
-
     }
 }

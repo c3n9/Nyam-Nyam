@@ -74,7 +74,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProcessDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="Int32" Nullable="false" />
     <Property Name="DishId" Type="Int32" />
     <NavigationProperty Name="Dish" Relationship="NyamNyamModel.FK_Recipes_Dish" FromRole="RecipeSteps" ToRole="Dish" />
     <NavigationProperty Name="Ingredient_RecipeSteps" Relationship="NyamNyamModel.FK_Ingredient_RecipeSteps_RecipeSteps" FromRole="RecipeSteps" ToRole="Ingredient_RecipeSteps" />
