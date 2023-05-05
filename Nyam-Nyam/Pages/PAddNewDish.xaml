@@ -30,7 +30,8 @@
             <TextBlock Text="Final price"
                        FontSize="16"/>
             <TextBox Text="{Binding FinalPrice}"
-                     FontSize="16"/>
+                     FontSize="16"
+                     PreviewTextInput="TextBox_PreviewTextInput"/>
             
             
             <Button x:Name="BSave"

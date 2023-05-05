@@ -25,7 +25,15 @@ namespace Nyam_Nyam.Pages
         {
             InitializeComponent();
             var recipes = App.DB.RecipeSteps.Where(r => r.DishId == dish.Id).ToList();
-            DataContext = recipes;
+            DataContext = dish;
+            var v = dish.RecipeSteps.SelectMany(s => s.Ingredient_RecipeSteps.Select(d => d.Ingredient)).ToList();
+            DGIngredient.ItemsSource = v;
+            LVRecipesStep.ItemsSource = dish.RecipeSteps.ToList();
+        }
+
+        private void BBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

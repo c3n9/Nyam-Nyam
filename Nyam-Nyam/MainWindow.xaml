@@ -9,23 +9,10 @@
         Title="Recipes" MinHeight="550" MinWidth="1100">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock FontSize="16"
-                   Margin="10,5,10,0"
-                   Grid.Column="1"
-                   HorizontalAlignment="Right">
-                <Hyperlink x:Name="Back"
-                           Click="Back_Click">
-                    Back
-                </Hyperlink>
-        </TextBlock>
-        <StackPanel Grid.Row="1">
+        <StackPanel>
             <TextBlock FontSize="16"
                    Margin="10,5,10,0">
                 <Hyperlink x:Name="HLDishes"

@@ -43,9 +43,5 @@ namespace Nyam_Nyam
             MainFrame.Navigate(new POrders());
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.GoBack();
-        }
     }
 }

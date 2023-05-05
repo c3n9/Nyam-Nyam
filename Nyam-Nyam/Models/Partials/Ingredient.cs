@@ -29,5 +29,8 @@ namespace Nyam_Nyam.Models
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        
     }
+    
 }

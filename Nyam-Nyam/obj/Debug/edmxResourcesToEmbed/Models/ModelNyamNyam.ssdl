@@ -18,7 +18,7 @@
     <Property Name="Photo" Type="image" />
     <Property Name="SourceRecipeLink" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="1000" />
-    <Property Name="FinalPrice" Type="nvarchar" MaxLength="50" />
+    <Property Name="FinalPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Ingredient">
     <Key>
@@ -30,7 +30,7 @@
     <Property Name="MainUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="AvailableCountInStock" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Ingredient_Recipes">
+  <EntityType Name="Ingredient_RecipeSteps">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -38,7 +38,7 @@
     <Property Name="IngredientId" Type="int" Nullable="false" />
     <Property Name="RecipesId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Recipes">
+  <EntityType Name="RecipeSteps">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -46,7 +46,6 @@
     <Property Name="ProcessDescription" Type="nvarchar" MaxLength="300" />
     <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DishId" Type="int" />
-    <Property Name="IngredientI_RecipesId" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -72,37 +71,37 @@
   </Association>
   <Association Name="FK_Ingredient_Recipes_Ingredient">
     <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
-    <End Role="Ingredient_Recipes" Type="Self.Ingredient_Recipes" Multiplicity="*" />
+    <End Role="Ingredient_RecipeSteps" Type="Self.Ingredient_RecipeSteps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Ingredient">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Ingredient_Recipes">
+      <Dependent Role="Ingredient_RecipeSteps">
         <PropertyRef Name="IngredientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ingredient_RecipeSteps_RecipeSteps">
+    <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="1" />
+    <End Role="Ingredient_RecipeSteps" Type="Self.Ingredient_RecipeSteps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RecipeSteps">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ingredient_RecipeSteps">
+        <PropertyRef Name="RecipesId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Recipes_Dish">
     <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
-    <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+    <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Dish">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Recipes">
+      <Dependent Role="RecipeSteps">
         <PropertyRef Name="DishId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Recipes_Ingredient_Recipes">
-    <End Role="Ingredient_Recipes" Type="Self.Ingredient_Recipes" Multiplicity="0..1" />
-    <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Ingredient_Recipes">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Recipes">
-        <PropertyRef Name="IngredientI_RecipesId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -110,8 +109,8 @@
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Ingredient_Recipes" EntityType="Self.Ingredient_Recipes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredient_RecipeSteps" EntityType="Self.Ingredient_RecipeSteps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecipeSteps" EntityType="Self.RecipeSteps" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Dish_Category" Association="Self.FK_Dish_Category">
       <End Role="Category" EntitySet="Category" />
@@ -119,15 +118,15 @@
     </AssociationSet>
     <AssociationSet Name="FK_Ingredient_Recipes_Ingredient" Association="Self.FK_Ingredient_Recipes_Ingredient">
       <End Role="Ingredient" EntitySet="Ingredient" />
-      <End Role="Ingredient_Recipes" EntitySet="Ingredient_Recipes" />
+      <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ingredient_RecipeSteps_RecipeSteps" Association="Self.FK_Ingredient_RecipeSteps_RecipeSteps">
+      <End Role="RecipeSteps" EntitySet="RecipeSteps" />
+      <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
     </AssociationSet>
     <AssociationSet Name="FK_Recipes_Dish" Association="Self.FK_Recipes_Dish">
       <End Role="Dish" EntitySet="Dish" />
-      <End Role="Recipes" EntitySet="Recipes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Recipes_Ingredient_Recipes" Association="Self.FK_Recipes_Ingredient_Recipes">
-      <End Role="Ingredient_Recipes" EntitySet="Ingredient_Recipes" />
-      <End Role="Recipes" EntitySet="Recipes" />
+      <End Role="RecipeSteps" EntitySet="RecipeSteps" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

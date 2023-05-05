@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,6 +51,24 @@ namespace Nyam_Nyam.Pages
 
         private void BSave_Click(object sender, RoutedEventArgs e)
         {
+            string error = "";
+            if (String.IsNullOrWhiteSpace(contextDish.Name))
+                error += "Enter name\n";
+            if (String.IsNullOrWhiteSpace(contextDish.Description))
+                error += "Enter description\n";
+            if (String.IsNullOrWhiteSpace(contextDish.SourceRecipeLink))
+                error += "Enter source recipe link\n";
+            if (String.IsNullOrWhiteSpace(contextDish.FinalPrice))
+                error += "Enter final price\n";
+            if (CBCategory.SelectedItem == null)
+                error += "Select category\n";
+            if (contextDish.Photo == null)
+                error += "Load image\n";
+            if (!String.IsNullOrWhiteSpace(error))
+            {
+                MessageBox.Show(error);
+                return;
+            }
             var selectedCategory = CBCategory.SelectedItem as Category; 
             contextDish.CategoryId = selectedCategory.Id;
             if(contextDish.Id == 0)
@@ -65,6 +84,15 @@ namespace Nyam_Nyam.Pages
             App.DB.Dish.Remove(contextDish);
             App.DB.SaveChanges();
             NavigationService.GoBack();
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[0-9]");
+            if (!regex.IsMatch(e.Text))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

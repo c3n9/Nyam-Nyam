@@ -9,25 +9,91 @@
       Title="PRecipes">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <TextBlock Text="{Binding Dish.Name, StringFormat='Recipe for «{0}»'}"
+        <StackPanel Grid.ColumnSpan="2"
+                    Margin="10">
+            <TextBlock Text="{Binding Name, StringFormat='Recipe for «{0}»'}"
                    FontSize="28"
                    Margin="0,0,0,10"/>
             <StackPanel Orientation="Horizontal">
-                <StackPanel>
-                    <TextBlock Text="{Binding Dish.Category.Name, StringFormat='Category: {0}'}"
-                               Margin="0,0,5,0"/>
-                    <TextBlock Text="{Binding Time, StringFormat='Cooking time: {0}'}"/>
+                <StackPanel Margin="0,0,10,0">
+                    <TextBlock Text="{Binding Category.Name, StringFormat='Category: {0}'}"
+                               Margin="0,0,5,5"
+                               FontSize="16"/>
+                    <TextBlock Text="{Binding Time, StringFormat='Cooking time: {0}'}"
+                               Margin="0,0,0,5"
+                               FontSize="16"/>
                 </StackPanel>
                 <StackPanel>
-                    <TextBlock Text="{Binding Dish.BaseServings, StringFormat='Servings: {0}'}"/>
+                    <TextBlock Text="{Binding BaseServings, StringFormat='Servings: {0}'}"
+                               Margin="0,0,0,5"
+                               FontSize="16"/>
+                    <TextBlock Text="Total cost: 0$"
+                               Margin="0,0,0,5"
+                               FontSize="16"/>
                 </StackPanel>
             </StackPanel>
+            <TextBlock Text="{Binding Dish.Description}"
+                       TextWrapping="Wrap"
+                       FontSize="16"/>
         </StackPanel>
-        
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Ingredients:"
+                       HorizontalAlignment="Center"
+                       FontSize="18"/>
+            <DataGrid ColumnWidth="*"
+                      x:Name="DGIngredient"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"
+                                        Binding="{Binding Name}"
+                                        FontSize="18" />
+                    <DataGridTextColumn Header="Quantity"
+                                        Binding="{Binding AvailableCountInStock}"
+                                        FontSize="18" />
+                    <DataGridTextColumn Header="Unit"
+                                        Binding="{Binding MainUnit}"
+                                        FontSize="18" />
+                    <DataGridTextColumn Header="Cost"
+                                        Binding="{Binding PricePerUnit}"
+                                        FontSize="18"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1">
+            <TextBlock Text="Cooking Process:"
+                       HorizontalAlignment="Center"
+                       FontSize="18" />
+            <ListView x:Name="LVRecipesStep"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      BorderThickness="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Steps}"
+                                   TextWrapping="Wrap"
+                                   FontSize="18"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <Button x:Name="BBack"
+                Content="Back"
+                Click="BBack_Click" 
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Width="100"
+                Height="30"
+                Margin="10"/>
     </Grid>
 </Page>

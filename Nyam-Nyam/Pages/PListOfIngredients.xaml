@@ -16,10 +16,10 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel Margin="10">
+        <StackPanel>
             <TextBlock Text="List of Ingredients"
                        FontSize="28"
-                       Margin="0,0,0,10" />
+                       Margin="10,0,0,10" />
         </StackPanel>
         <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   x:Name="LVIngredients"

@@ -14,18 +14,11 @@ namespace Nyam_Nyam.Models
     
     public partial class Ingredient_RecipeSteps
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ingredient_RecipeSteps()
-        {
-            this.RecipeSteps = new HashSet<RecipeSteps>();
-        }
-    
         public int Id { get; set; }
         public int IngredientId { get; set; }
         public int RecipesId { get; set; }
     
         public virtual Ingredient Ingredient { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RecipeSteps> RecipeSteps { get; set; }
+        public virtual RecipeSteps RecipeSteps { get; set; }
     }
 }

@@ -12,7 +12,6 @@
 
     <Grid>
         <TextBlock Text="Will be developed later...."
-                   FontSize="28"
-                   Margin="0,0,0,10" />
+                   FontSize="28"/>
     </Grid>
 </Page>

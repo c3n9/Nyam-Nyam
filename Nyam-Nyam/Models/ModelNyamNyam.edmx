@@ -51,7 +51,6 @@
           <Property Name="ProcessDescription" Type="nvarchar" MaxLength="300" />
           <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DishId" Type="int" />
-          <Property Name="IngredientI_RecipesId" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -87,6 +86,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Ingredient_RecipeSteps_RecipeSteps">
+          <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="1" />
+          <End Role="Ingredient_RecipeSteps" Type="Self.Ingredient_RecipeSteps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipeSteps">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient_RecipeSteps">
+              <PropertyRef Name="RecipesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Recipes_Dish">
           <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
           <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="*" />
@@ -96,18 +107,6 @@
             </Principal>
             <Dependent Role="RecipeSteps">
               <PropertyRef Name="DishId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Recipes_Ingredient_Recipes">
-          <End Role="Ingredient_RecipeSteps" Type="Self.Ingredient_RecipeSteps" Multiplicity="0..1" />
-          <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ingredient_RecipeSteps">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RecipeSteps">
-              <PropertyRef Name="IngredientI_RecipesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -126,12 +125,12 @@
             <End Role="Ingredient" EntitySet="Ingredient" />
             <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
           </AssociationSet>
+          <AssociationSet Name="FK_Ingredient_RecipeSteps_RecipeSteps" Association="Self.FK_Ingredient_RecipeSteps_RecipeSteps">
+            <End Role="RecipeSteps" EntitySet="RecipeSteps" />
+            <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
+          </AssociationSet>
           <AssociationSet Name="FK_Recipes_Dish" Association="Self.FK_Recipes_Dish">
             <End Role="Dish" EntitySet="Dish" />
-            <End Role="RecipeSteps" EntitySet="RecipeSteps" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Recipes_Ingredient_Recipes" Association="Self.FK_Recipes_Ingredient_Recipes">
-            <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
             <End Role="RecipeSteps" EntitySet="RecipeSteps" />
           </AssociationSet>
         </EntityContainer>
@@ -158,9 +157,9 @@
             <End Role="Ingredient" EntitySet="Ingredient" />
             <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
           </AssociationSet>
-          <AssociationSet Name="FK_Recipes_Ingredient_Recipes" Association="NyamNyamModel.FK_Recipes_Ingredient_Recipes">
-            <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
+          <AssociationSet Name="FK_Ingredient_RecipeSteps_RecipeSteps" Association="NyamNyamModel.FK_Ingredient_RecipeSteps_RecipeSteps">
             <End Role="RecipeSteps" EntitySet="RecipeSteps" />
+            <End Role="Ingredient_RecipeSteps" EntitySet="Ingredient_RecipeSteps" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
@@ -205,7 +204,7 @@
           <Property Name="IngredientId" Type="Int32" Nullable="false" />
           <Property Name="RecipesId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Ingredient" Relationship="NyamNyamModel.FK_Ingredient_Recipes_Ingredient" FromRole="Ingredient_RecipeSteps" ToRole="Ingredient" />
-          <NavigationProperty Name="RecipeSteps" Relationship="NyamNyamModel.FK_Recipes_Ingredient_Recipes" FromRole="Ingredient_RecipeSteps" ToRole="RecipeSteps" />
+          <NavigationProperty Name="RecipeSteps" Relationship="NyamNyamModel.FK_Ingredient_RecipeSteps_RecipeSteps" FromRole="Ingredient_RecipeSteps" ToRole="RecipeSteps" />
         </EntityType>
         <EntityType Name="RecipeSteps">
           <Key>
@@ -215,9 +214,8 @@
           <Property Name="ProcessDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DishId" Type="Int32" />
-          <Property Name="IngredientI_RecipesId" Type="Int32" />
           <NavigationProperty Name="Dish" Relationship="NyamNyamModel.FK_Recipes_Dish" FromRole="RecipeSteps" ToRole="Dish" />
-          <NavigationProperty Name="Ingredient_RecipeSteps" Relationship="NyamNyamModel.FK_Recipes_Ingredient_Recipes" FromRole="RecipeSteps" ToRole="Ingredient_RecipeSteps" />
+          <NavigationProperty Name="Ingredient_RecipeSteps" Relationship="NyamNyamModel.FK_Ingredient_RecipeSteps_RecipeSteps" FromRole="RecipeSteps" ToRole="Ingredient_RecipeSteps" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -265,19 +263,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Recipes_Ingredient_Recipes">
-          <End Type="NyamNyamModel.Ingredient_RecipeSteps" Role="Ingredient_RecipeSteps" Multiplicity="0..1" />
-          <End Type="NyamNyamModel.RecipeSteps" Role="RecipeSteps" Multiplicity="*" />
+        <Association Name="FK_Ingredient_RecipeSteps_RecipeSteps">
+          <End Type="NyamNyamModel.RecipeSteps" Role="RecipeSteps" Multiplicity="1" />
+          <End Type="NyamNyamModel.Ingredient_RecipeSteps" Role="Ingredient_RecipeSteps" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Ingredient_RecipeSteps">
+            <Principal Role="RecipeSteps">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RecipeSteps">
-              <PropertyRef Name="IngredientI_RecipesId" />
+            <Dependent Role="Ingredient_RecipeSteps">
+              <PropertyRef Name="RecipesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -328,7 +326,6 @@
           <EntitySetMapping Name="RecipeSteps">
             <EntityTypeMapping TypeName="NyamNyamModel.RecipeSteps">
               <MappingFragment StoreEntitySet="RecipeSteps">
-                <ScalarProperty Name="IngredientI_RecipesId" ColumnName="IngredientI_RecipesId" />
                 <ScalarProperty Name="DishId" ColumnName="DishId" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="ProcessDescription" ColumnName="ProcessDescription" />
