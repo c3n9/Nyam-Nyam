@@ -37,6 +37,8 @@
     <EntitySetMapping Name="Ingredient_RecipeSteps">
       <EntityTypeMapping TypeName="NyamNyamModel.Ingredient_RecipeSteps">
         <MappingFragment StoreEntitySet="Ingredient_RecipeSteps">
+          <ScalarProperty Name="Used" ColumnName="Used" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="RecipesId" ColumnName="RecipesId" />
           <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
           <ScalarProperty Name="Id" ColumnName="Id" />

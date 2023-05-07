@@ -65,6 +65,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IngredientId" Type="Int32" Nullable="false" />
     <Property Name="RecipesId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Used" Type="Boolean" />
     <NavigationProperty Name="Ingredient" Relationship="NyamNyamModel.FK_Ingredient_Recipes_Ingredient" FromRole="Ingredient_RecipeSteps" ToRole="Ingredient" />
     <NavigationProperty Name="RecipeSteps" Relationship="NyamNyamModel.FK_Ingredient_RecipeSteps_RecipeSteps" FromRole="Ingredient_RecipeSteps" ToRole="RecipeSteps" />
   </EntityType>
@@ -102,7 +104,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Recipes_Dish">
-    <End Type="NyamNyamModel.Dish" Role="Dish" Multiplicity="0..1" />
+    <End Type="NyamNyamModel.Dish" Role="Dish" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="NyamNyamModel.RecipeSteps" Role="RecipeSteps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Dish">
@@ -126,7 +130,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ingredient_RecipeSteps_RecipeSteps">
-    <End Type="NyamNyamModel.RecipeSteps" Role="RecipeSteps" Multiplicity="1" />
+    <End Type="NyamNyamModel.RecipeSteps" Role="RecipeSteps" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="NyamNyamModel.Ingredient_RecipeSteps" Role="Ingredient_RecipeSteps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RecipeSteps">

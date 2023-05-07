@@ -59,7 +59,8 @@
                                 Width="25"
                                 Height="25"/>
                     </StackPanel>
-                    <TextBlock Text="Total cost: 0$"
+                    <TextBlock Text=""
+                               x:Name="TBTotalCost"
                                Margin="0,0,0,5"
                                FontSize="16"/>
                 </StackPanel>
@@ -69,26 +70,67 @@
                        FontSize="16"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <TextBlock Text="Ingredients:"
+            <TextBlock Text="Ingredients for 1 serving:"
                        HorizontalAlignment="Center"
                        FontSize="18"/>
             <DataGrid ColumnWidth="*"
                       x:Name="DGIngredient"
-                      IsReadOnly="True"
-                      AutoGenerateColumns="False">
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      SelectionChanged="DGIngredient_SelectionChanged"
+                      HorizontalScrollBarVisibility="Disabled">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="20">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="20"
+                                        Name="Border"
+                                        Width="15"
+                                        Height="15"
+                                        BorderThickness="1"
+                                        BorderBrush="Black">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Color}" Value="False" >
+                                                    <Setter Property="Background"
+                                                            Value="Red"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Color}" Value="True" >
+                                                    <Setter Property="Background"
+                                                            Value="Green"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridCheckBoxColumn Header="Use" Binding="{Binding Used}"/>
                     <DataGridTextColumn Header="Name"
-                                        Binding="{Binding Name}"
-                                        FontSize="18" />
+                                        Binding="{Binding Ingredient.Name}"
+                                        FontSize="18"
+                                        IsReadOnly="True">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Quantity"
-                                        Binding="{Binding AvailableCountInStock}"
-                                        FontSize="18" />
+                                        Binding="{Binding Quantity}"
+                                        FontSize="18"
+                                        IsReadOnly="True"/>
                     <DataGridTextColumn Header="Unit"
-                                        Binding="{Binding MainUnit}"
-                                        FontSize="18" />
+                                        Binding="{Binding Ingredient.MainUnit}"
+                                        FontSize="18"
+                                        IsReadOnly="True"/>
                     <DataGridTextColumn Header="Cost"
-                                        Binding="{Binding PricePerUnit}"
-                                        FontSize="18"/>
+                                        Binding="{Binding Ingredient.PricePerUnit}"
+                                        FontSize="18"
+                                        IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

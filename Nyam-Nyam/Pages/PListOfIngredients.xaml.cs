@@ -37,7 +37,15 @@ namespace Nyam_Nyam.Pages
         }
         private void Refresh()
         {
-            LVIngredients.ItemsSource = App.DB.Ingredient.ToList();
+            var ingredients = App.DB.Ingredient.ToList();
+            double result = 0;
+            foreach(var i in ingredients)
+            {
+                double c = double.Parse(i.PricePerUnit) * i.AvailableCountInStock;
+                result += c;
+            }
+            TBFullCost.Text = $"Total available ingredients for the amount ($): {result}";
+            LVIngredients.ItemsSource = ingredients;
             App.MainWindowInstance.HLIngredients.IsEnabled = false;
         }
 

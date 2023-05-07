@@ -8,29 +8,28 @@ using System.Threading.Tasks;
 
 namespace Nyam_Nyam.Models
 {
-    public partial class Ingredient : INotifyPropertyChanged
+    public partial class Ingredient/*: INotifyPropertyChanged*/
     {
-        public int AvailableCountInStockPartial
-        {
-            get
-            {
-                return AvailableCountInStock;
-            }
-            set
-            {
-                AvailableCountInStock = value;
-                OnPropertyChange();
-            }
-        }
+        //public int AvailableCountInStockPartial
+        //{
+        //    get
+        //    {
+        //        return AvailableCountInStock;
+        //    }
+        //    set
+        //    {
+        //        AvailableCountInStock = value;
+        //        OnPropertyChange();
+        //    }
+        //}
 
-        public void OnPropertyChange([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //public void OnPropertyChange([CallerMemberName] String propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        
     }
     
 }

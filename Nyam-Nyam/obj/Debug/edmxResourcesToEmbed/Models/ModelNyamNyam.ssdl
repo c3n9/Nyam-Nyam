@@ -37,6 +37,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IngredientId" Type="int" Nullable="false" />
     <Property Name="RecipesId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Used" Type="bit" />
   </EntityType>
   <EntityType Name="RecipeSteps">
     <Key>
@@ -82,7 +84,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Ingredient_RecipeSteps_RecipeSteps">
-    <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="1" />
+    <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Ingredient_RecipeSteps" Type="Self.Ingredient_RecipeSteps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RecipeSteps">
@@ -94,7 +98,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Recipes_Dish">
-    <End Role="Dish" Type="Self.Dish" Multiplicity="0..1" />
+    <End Role="Dish" Type="Self.Dish" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="RecipeSteps" Type="Self.RecipeSteps" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Dish">

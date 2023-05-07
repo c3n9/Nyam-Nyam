@@ -5,13 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Nyam_Nyam.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="PAddNewDish">
 
     <Grid>
-        <StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10">
+            <TextBlock Text="Dish"
+                       FontSize="20"
+                       TextDecorations="Underline"/>
             <TextBlock Text="Name"
-                       FontSize="16" />
+                       FontSize="16"/>
             <TextBox Text="{Binding Name}"
                      FontSize="16"
                      MaxLength="50" />
@@ -38,7 +50,8 @@
                        FontSize="16" />
             <ComboBox x:Name="CBCategory"
                       DisplayMemberPath="Name"
-                      SelectedItem="{Binding Category}" />
+                      SelectedItem="{Binding Category}"
+                      FontSize="16"/>
             <Image Source="{Binding Photo}"
                    Height="250"
                    Width="400"
@@ -47,15 +60,93 @@
             <Button x:Name="BPhoto"
                     Click="BPhoto_Click"
                     Content="Add photo" />
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Margin="10">
+            <TextBlock Text="Steps recipe"
+                       FontSize="20"
+                       TextDecorations="Underline"/>
+            <TextBlock Text="Process description"
+                       FontSize="16"/>
+            <TextBox x:Name="TBStep"
+                     FontSize="16"/>
+            <TextBlock Text="Time in minutes"
+                       FontSize="16"/>
+            <TextBox x:Name="TBTime"
+                     FontSize="16"/>
+            <Button x:Name="BAddStep"
+                    Content="Add step"
+                    Click="BAddStep_Click"/>
+            <DataGrid ColumnWidth="*"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      x:Name="DGSteps"
+                      SelectionChanged="DGSteps_SelectionChanged"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Process description" Binding="{Binding ProcessDescription}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                <Setter Property="TextBlock.TextAlignment" Value="Justify"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Time" Binding="{Binding Time}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Column="2"
+                    Margin="10">
+            <TextBlock Text="Ingredients"
+                       FontSize="20"
+                       TextDecorations="Underline"/>
+            <TextBlock Text="Selected ingredients for steps"
+                       FontSize="16"/>
+            <ComboBox x:Name="CBIngredient"
+                      DisplayMemberPath="Name"
+                      FontSize="16"/>
+            <TextBlock Text="Quantity"
+                       FontSize="16"/>
+            <TextBox x:Name="TBQuantity"
+                     FontSize="16"/>
+            <Button x:Name="BAddIngredient"
+                    Content="Add ingredient"
+                    Click="BAddIngredient_Click"/>
+            <DataGrid ColumnWidth="*"
+                      IsReadOnly="True"
+                      x:Name="DGIngredients"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Process description" Binding="{Binding Ingredient.Name}"/>
+                    <DataGridTextColumn Header="Time" Binding="{Binding Ingredient.PricePerUnit}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    VerticalAlignment="Center"
+                    Margin="10"
+                    HorizontalAlignment="Center">
             <Button x:Name="BSave"
                     Click="BSave_Click"
-                    Content="Save" />
+                    Content="Save" 
+                    Margin="2"
+                    Width="300"
+                    Height="25"/>
             <Button x:Name="BDelete"
                     Click="BDelete_Click"
-                    Content="Delete" />
+                    Content="Delete"
+                    Margin="2"
+                    Height="25"/>
             <Button x:Name="BCancel"
                     Click="BCancel_Click"
-                    Content="Cancel" />
+                    Content="Cancel"
+                    Margin="2"
+                    Height="25"/>
         </StackPanel>
     </Grid>
 </Page>

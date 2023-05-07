@@ -27,6 +27,7 @@ namespace Nyam_Nyam.Pages
         {
             InitializeComponent();        
             contextDish = dish;
+            
             Refresh();
         }
 
@@ -37,28 +38,37 @@ namespace Nyam_Nyam.Pages
 
         private void BMinus_Click(object sender, RoutedEventArgs e)
         {
-            var dish = (sender as Button).DataContext as Dish;
-            if (int.Parse(dish.BaseServings) == 0)
+            if (int.Parse(contextDish.BaseServings) == 0)
                 return;
-            dish.BaseServings = Convert.ToString(int.Parse(dish.BaseServings) - 1);
+            contextDish.BaseServings = Convert.ToString(int.Parse(contextDish.BaseServings) - 1);
             App.DB.SaveChanges();
             Refresh();
+            DataContext = null;
+            DataContext = contextDish;
         }
         private void Refresh()
         {
-            var recipes = App.DB.RecipeSteps.Where(r => r.DishId == contextDish.Id).ToList();
+
             DataContext = null;
             DataContext = contextDish;
-            var v = contextDish.RecipeSteps.SelectMany(s => s.Ingredient_RecipeSteps.Select(d => d.Ingredient)).ToList();
+            var v = contextDish.RecipeSteps.SelectMany(s => s.Ingredient_RecipeSteps).ToList();
+            double result = 0;
+            foreach(var i in v)
+            {
+                if(i.Used == true)
+                {
+                    result += double.Parse(i.Ingredient.PricePerUnit) * i.Quantity.Value * double.Parse(contextDish.BaseServings);
+                }   
+            }
+            TBTotalCost.Text = $"Total cost: {result}";
             DGIngredient.ItemsSource = v;
             LVRecipesStep.ItemsSource = contextDish.RecipeSteps.ToList();
         }
         private void BPlus_Click(object sender, RoutedEventArgs e)
         {
-            var dish = (sender as Button).DataContext as Dish;
-            if (int.Parse(dish.BaseServings) == 99)
+            if (int.Parse(contextDish.BaseServings) == 99)
                 return;
-            dish.BaseServings = Convert.ToString(int.Parse(dish.BaseServings) + 1);
+            contextDish.BaseServings = Convert.ToString(int.Parse(contextDish.BaseServings) + 1);
             App.DB.SaveChanges();
             Refresh();
         }
@@ -80,6 +90,12 @@ namespace Nyam_Nyam.Pages
         private void TBCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             App.DB.SaveChanges();
+        }
+
+        private void DGIngredient_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            App.DB.SaveChanges();
+            Refresh();
         }
     }
 }
