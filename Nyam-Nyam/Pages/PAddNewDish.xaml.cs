@@ -104,7 +104,7 @@ namespace Nyam_Nyam.Pages
             step.Time = int.Parse(TBTime.Text);
             if (contextDish.Id != 0)
             {
-                recipeSteps = App.DB.RecipeSteps.ToList();
+                recipeSteps = App.DB.RecipeSteps.Where(r => r.DishId == contextDish.Id).ToList();
                 App.DB.RecipeSteps.Add(step);
                 step.DishId = contextDish.Id;
             }

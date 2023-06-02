@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Asus\OneDrive\Рабочий стол\Nyam-Nyam\Nyam-Nyam\obj\Debug\
+D:\Projects\Nyam-Nyam\Nyam-Nyam\obj\Debug\
 Nyam_Nyam
 none
 false
 DEBUG;TRACE
-C:\Users\Asus\OneDrive\Рабочий стол\Nyam-Nyam\Nyam-Nyam\App.xaml
+D:\Projects\Nyam-Nyam\Nyam-Nyam\App.xaml
 6-1005631929
 21574193859
 23872534749
-18670179487
+18477009441
 MainWindow.xaml;Pages\PAddNewDish.xaml;Pages\PDishes.xaml;Pages\PListOfIngredients.xaml;Pages\POrders.xaml;Pages\PRecipes.xaml;
 
 False
