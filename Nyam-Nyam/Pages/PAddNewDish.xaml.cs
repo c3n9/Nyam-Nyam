@@ -41,9 +41,13 @@ namespace Nyam_Nyam.Pages
             }
             else
             {
-                recipeSteps = dish.RecipeSteps.ToList();
+                Refresh();
                 DGSteps.ItemsSource = recipeSteps;
             }
+        }
+        private void Refresh()
+        {
+            recipeSteps = contextDish.RecipeSteps.ToList();
         }
         private void BPhoto_Click(object sender, RoutedEventArgs e)
         {
@@ -105,8 +109,8 @@ namespace Nyam_Nyam.Pages
             if (contextDish.Id != 0)
             {
                 recipeSteps = App.DB.RecipeSteps.Where(r => r.DishId == contextDish.Id).ToList();
-                App.DB.RecipeSteps.Add(step);
                 step.DishId = contextDish.Id;
+                App.DB.RecipeSteps.Add(step);
             }
             if (contextDish.Id == 0)
             {
